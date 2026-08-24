@@ -1,1 +1,349 @@
 
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dispersão da Luz por Difração</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+  <div class="logo">🌈 Difração da Luz</div>
+  <ul>
+    <li><a href="#intro">Introdução</a></li>
+    <li><a href="#difracao">Difração</a></li>
+    <li><a href="#espectro">Espectro</a></li>
+    <li><a href="#simulador">Simulador</a></li>
+    <li><a href="#equacao">Equação</a></li>
+    <li><a href="#aplicacoes">Aplicações</a></li>
+    <li><a href="#quiz">Quiz</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <span class="hero-badge">📚 Física Óptica · Apresentação Interativa</span>
+  <h1>Dispersão da Luz<br>por Difração</h1>
+  <p>Descubra como a luz se comporta ao encontrar obstáculos e fendas, separando-se em todas as cores do arco-íris através do fenômeno da difração.</p>
+  <div class="scroll-indicator">↓ Role para explorar</div>
+</section>
+
+<!-- INTRODUÇÃO -->
+<section id="intro" class="fade-in">
+  <h2 class="section-title">O que vamos explorar?</h2>
+  <p class="section-subtitle">Uma jornada completa pelo fascinante mundo da óptica ondulatória, com simulações interativas e explicações detalhadas.</p>
+  
+  <div class="grid">
+    <div class="card">
+      <div class="card-icon">🌊</div>
+      <h3>Natureza Ondulatória</h3>
+      <p>A luz é uma onda eletromagnética que apresenta fenômenos como difração, interferência e polarização.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🔬</div>
+      <h3>Difração</h3>
+      <p>O desvio e espalhamento da luz quando encontra um obstáculo ou fenda com dimensões comparáveis ao seu comprimento de onda.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🌈</div>
+      <h3>Dispersão</h3>
+      <p>A separação da luz branca em suas diferentes cores componentes, cada uma com seu comprimento de onda específico.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">📐</div>
+      <h3>Redes de Difração</h3>
+      <p>Superfícies com milhares de fendas paralelas que produzem padrões de interferência nítidos e espectros bem definidos.</p>
+    </div>
+  </div>
+</section>
+
+<!-- DIFRAÇÃO -->
+<section id="difracao" class="fade-in">
+  <h2 class="section-title">O Fenômeno da Difração</h2>
+  <p class="section-subtitle">Quando a luz encontra um obstáculo ou abertura, ela não segue apenas em linha reta — ela se espalha e contorna os obstáculos.</p>
+  
+  <div class="info-box">
+    <strong>📖 Princípio de Huygens:</strong> Cada ponto de uma frente de onda pode ser considerado como uma nova fonte de ondas secundárias. É esse princípio que explica por que a luz se espalha ao passar por uma fenda.
+  </div>
+  
+  <p style="margin-bottom: 1rem;">A difração ocorre quando a luz encontra uma fenda ou obstáculo cujas dimensões são <strong>comparáveis ao seu comprimento de onda</strong> (da ordem de nanômetros a micrômetros para a luz visível).</p>
+  
+  <p style="margin-bottom: 1rem;">Quanto <strong>menor a fenda</strong>, maior o espalhamento da luz. Quanto <strong>maior o comprimento de onda</strong>, mais evidente é o fenômeno — por isso a luz vermelha difrata mais que a azul.</p>
+  
+  <h3 style="margin-top: 2rem; margin-bottom: 1rem;">🌊 Veja as ondas se propagando:</h3>
+  <div class="wave-demo">
+    <canvas id="waveCanvas"></canvas>
+  </div>
+  
+  <div class="grid" style="margin-top: 2rem;">
+    <div class="card">
+      <h3>🔹 Fenda Única</h3>
+      <p>Produz um padrão de difração com um máximo central largo e máximos secundários menos intensos dos lados.</p>
+    </div>
+    <div class="card">
+      <h3>🔹 Fenda Dupla</h3>
+      <p>Combina difração com interferência, produzindo franjas claras e escuras alternadas (experimento de Young).</p>
+    </div>
+    <div class="card">
+      <h3>🔹 Múltiplas Fendas</h3>
+      <p>Redes de difração com centenas de fendas produzem máximos muito nítidos e brilhantes — a base dos espectrômetros.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ESPECTRO -->
+<section id="espectro" class="fade-in">
+  <h2 class="section-title">O Espectro Visível</h2>
+  <p class="section-subtitle">A luz branca é composta por uma mistura de todas as cores. Cada cor corresponde a um comprimento de onda diferente. Clique na barra abaixo para explorar!</p>
+  
+  <div class="spectrum-bar" id="spectrumBar"></div>
+  
+  <div class="spectrum-info">
+    <div class="wavelength" id="wavelengthDisplay">550 nm</div>
+    <div class="color-name" id="colorName">Verde — Clique na barra acima!</div>
+    <div style="margin-top: 1rem; color: var(--muted); font-size: 0.9rem;" id="colorDesc">
+      O espectro visível vai de aproximadamente 380 nm (violeta) a 750 nm (vermelho).
+    </div>
+  </div>
+  
+  <div class="info-box" style="margin-top: 2rem;">
+    <strong>💡 Curiosidade:</strong> Na difração por uma rede, cada comprimento de onda é desviado em um ângulo diferente. Isso faz com que a luz branca se separe em um verdadeiro arco-íris — é assim que funcionam os CDs e DVDs quando refletem a luz!
+  </div>
+</section>
+
+<!-- SIMULADOR -->
+<section id="simulador" class="fade-in">
+  <h2 class="section-title">Simulador de Rede de Difração</h2>
+  <p class="section-subtitle">Ajuste os parâmetros e veja em tempo real como o padrão de difração muda. Observe como o número de fendas e o comprimento de onda afetam o resultado.</p>
+  
+  <div class="simulator">
+    <canvas id="diffractionCanvas"></canvas>
+    
+    <div class="controls">
+      <div class="control-group">
+        <label>Comprimento de onda <span class="value" id="wlValue">550 nm</span></label>
+        <input type="range" id="wavelength" min="380" max="750" value="550">
+      </div>
+      <div class="control-group">
+        <label>Número de fendas <span class="value" id="slitsValue">4</span></label>
+        <input type="range" id="slits" min="1" max="20" value="4">
+      </div>
+      <div class="control-group">
+        <label>Espaçamento (d) <span class="value" id="spacingValue">10 μm</span></label>
+        <input type="range" id="spacing" min="5" max="30" value="10">
+      </div>
+      <div class="control-group">
+        <label>Largura da fenda (a) <span class="value" id="widthValue">2 μm</span></label>
+        <input type="range" id="slitWidth" min="1" max="10" value="2">
+      </div>
+    </div>
+  </div>
+  
+  <div class="info-box" style="margin-top: 2rem;">
+    <strong>🎯 Observe:</strong> Aumentar o número de fendas torna os máximos mais nítidos e brilhantes. Aumentar o comprimento de onda afasta os máximos do centro. Diminuir o espaçamento entre fendas também afasta os máximos.
+  </div>
+</section>
+
+<!-- EQUAÇÃO -->
+<section id="equacao" class="fade-in">
+  <h2 class="section-title">A Equação Fundamental</h2>
+  <p class="section-subtitle">A relação matemática que governa a difração por redes é elegante e poderosa. Ela nos permite calcular exatamente onde cada cor aparecerá.</p>
+  
+  <div class="equation-box">
+    <div style="color: var(--muted); margin-bottom: 0.5rem;">Equação das redes de difração:</div>
+    <div class="equation">
+      <span>d</span> · sin(<span>θ</span>) = <span>m</span> · <span>λ</span>
+    </div>
+    <div style="color: var(--muted); font-size: 0.95rem; margin-top: 1rem;">
+      onde <strong style="color:#a855f7">d</strong> = espaçamento entre fendas, 
+      <strong style="color:#a855f7">θ</strong> = ângulo do máximo, 
+      <strong style="color:#a855f7">m</strong> = ordem do máximo (0, ±1, ±2...), 
+      <strong style="color:#a855f7">λ</strong> = comprimento de onda
+    </div>
+  </div>
+  
+  <h3 style="margin-top: 2rem; margin-bottom: 1rem;">🧮 Calculadora Interativa</h3>
+  <p style="color: var(--muted); margin-bottom: 1rem;">Insira os valores conhecidos e calcule o ângulo do máximo de difração:</p>
+  
+  <div class="calculator">
+    <div class="calc-inputs">
+      <div>
+        <label style="display:block; color: var(--muted); margin-bottom: 0.3rem; font-size: 0.9rem;">Espaçamento d (μm)</label>
+        <input type="number" id="calcD" value="10" step="0.1" min="0.1">
+      </div>
+      <div>
+        <label style="display:block; color: var(--muted); margin-bottom: 0.3rem; font-size: 0.9rem;">Comprimento λ (nm)</label>
+        <input type="number" id="calcLambda" value="550" step="1" min="380" max="750">
+      </div>
+      <div>
+        <label style="display:block; color: var(--muted); margin-bottom: 0.3rem; font-size: 0.9rem;">Ordem m</label>
+        <input type="number" id="calcM" value="1" step="1" min="0" max="10">
+      </div>
+    </div>
+    
+    <div class="calc-result">
+      <div style="color: var(--muted); font-size: 0.9rem; margin-bottom: 0.5rem;">Ângulo θ do máximo:</div>
+      <div class="big" id="calcResult">3.15°</div>
+      <div style="color: var(--muted); font-size: 0.9rem; margin-top: 0.5rem;" id="calcExplanation">
+        sin(θ) = m·λ/d = 1 × 550 nm / 10000 nm = 0.055
+      </div>
+    </div>
+  </div>
+  
+  <div class="info-box" style="margin-top: 2rem;">
+    <strong>📊 Poder de resolução:</strong> A capacidade de uma rede separar dois comprimentos de onda próximos é dada por R = λ/Δλ = m·N, onde N é o número total de fendas iluminadas. Quanto mais fendas, melhor a resolução!
+  </div>
+</section>
+
+<!-- COMPARAÇÃO -->
+<section class="fade-in">
+  <h2 class="section-title">Difração vs Refração</h2>
+  <p class="section-subtitle">Ambos os fenômenos podem dispersar a luz, mas funcionam de maneiras fundamentalmente diferentes.</p>
+  
+  <div class="comparison">
+    <div class="compare-card">
+      <h3>🌈 Dispersão por Refração (Prisma)</h3>
+      <ul>
+        <li>Ocorre na passagem entre meios com índices de refração diferentes</li>
+        <li>A luz violeta desvia-se mais que a vermelha</li>
+        <li>Depende do índice de refração do material (n)</li>
+        <li>O espectro é produzido uma única vez</li>
+        <li>Ordem: vermelho → violeta (vermelho menos desviado)</li>
+        <li>Exemplo: arco-íris, prisma de vidro</li>
+      </ul>
+    </div>
+    <div class="compare-card">
+      <h3>🔬 Dispersão por Difração (Rede)</h3>
+      <ul>
+        <li>Ocorre pelo espalhamento da luz em fendas ou obstáculos</li>
+        <li>A luz vermelha desvia-se mais que a violeta</li>
+        <li>Depende do comprimento de onda e do espaçamento d</li>
+        <li>Produz múltiplos espectros (ordens m = 1, 2, 3...)</li>
+        <li>Ordem: violeta → vermelho (vermelho mais desviado)</li>
+        <li>Exemplo: CDs, espectrômetros, hologramas</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- APLICAÇÕES -->
+<section id="aplicacoes" class="fade-in">
+  <h2 class="section-title">Aplicações no Mundo Real</h2>
+  <p class="section-subtitle">A difração da luz não é apenas um fenômeno de laboratório — está presente em tecnologias essenciais do nosso dia a dia.</p>
+  
+  <div class="app-item">
+    <div class="app-number">01</div>
+    <div class="app-content">
+      <h4>🔭 Espectroscopia Astronômica</h4>
+      <p>Astrônomos usam redes de difração para analisar a luz das estrelas e determinar sua composição química, temperatura, velocidade e distância. Cada elemento químico deixa uma "assinatura" única no espectro.</p>
+    </div>
+  </div>
+  
+  <div class="app-item">
+    <div class="app-number">02</div>
+    <div class="app-content">
+      <h4>💿 CDs, DVDs e Blu-rays</h4>
+      <p>As trilhas microscópicas nos discos ópticos funcionam como redes de difração, produzindo os famosos arco-íris quando a luz incide sobre eles. O espaçamento entre as trilhas é da ordem de micrômetros.</p>
+    </div>
+  </div>
+  
+  <div class="app-item">
+    <div class="app-number">03</div>
+    <div class="app-content">
+      <h4>🧬 Cristalografia de Raios-X</h4>
+      <p>A difração de raios-X por cristais permitiu descobrir a estrutura do DNA (Watson e Crick, 1953) e de milhares de proteínas. Os átomos do cristal atuam como uma rede de difração tridimensional.</p>
+    </div>
+  </div>
+  
+  <div class="app-item">
+    <div class="app-number">04</div>
+    <div class="app-content">
+      <h4>📡 Telecomunicações</h4>
+      <p>Redes de difração são usadas em multiplexadores WDM (Wavelength Division Multiplexing) para combinar e separar diferentes comprimentos de onda em fibras ópticas, permitindo transmitir terabits de dados por segundo.</p>
+    </div>
+  </div>
+  
+  <div class="app-item">
+    <div class="app-number">05</div>
+    <div class="app-content">
+      <h4>🎨 Holografia</h4>
+      <p>Hologramas usam padrões de interferência e difração para reconstruir imagens tridimensionais. Cada ponto do holograma contém informação sobre toda a cena, graças ao princípio de Huygens.</p>
+    </div>
+  </div>
+  
+  <div class="app-item">
+    <div class="app-number">06</div>
+    <div class="app-content">
+      <h4>🏥 Diagnósticos Médicos</h4>
+      <p>Espectrômetros baseados em difração analisam amostras de sangue e tecidos, identificando substâncias químicas pela sua assinatura espectral — essencial em laboratórios clínicos modernos.</p>
+    </div>
+  </div>
+</section>
+
+<!-- QUIZ -->
+<section id="quiz" class="fade-in">
+  <h2 class="section-title">Teste seus Conhecimentos</h2>
+  <p class="section-subtitle">Responda às perguntas abaixo para verificar o que você aprendeu sobre dispersão da luz por difração.</p>
+  
+  <div class="quiz">
+    <div id="quizContent">
+      <div class="quiz-question" id="questionText"></div>
+      <div class="quiz-options" id="optionsContainer"></div>
+      <div class="quiz-feedback" id="feedback"></div>
+    </div>
+    
+    <div class="quiz-nav">
+      <div style="color: var(--muted);">
+        Pergunta <span id="currentQ">1</span> de <span id="totalQ">5</span>
+      </div>
+      <button class="btn" id="nextBtn" disabled>Próxima →</button>
+    </div>
+    
+    <div id="finalScore" style="display:none; text-align:center; padding: 2rem;">
+      <h3 style="font-size: 2rem; margin-bottom: 1rem;">🎉 Quiz Concluído!</h3>
+      <div style="font-size: 3rem; font-weight: 800; color: #a855f7; margin: 1rem 0;" id="scoreDisplay"></div>
+      <p style="color: var(--muted);" id="scoreMessage"></p>
+      <button class="btn" style="margin-top: 1.5rem;" onclick="restartQuiz()">Tentar Novamente</button>
+    </div>
+  </div>
+</section>
+
+<!-- RESUMO FINAL -->
+<section class="fade-in">
+  <h2 class="section-title">Resumo Final</h2>
+  <p class="section-subtitle">Os pontos essenciais que você deve lembrar sobre dispersão da luz por difração:</p>
+  
+  <div class="grid">
+    <div class="card">
+      <div class="card-icon">🌊</div>
+      <h3>A luz é onda</h3>
+      <p>A difração é uma prova direta da natureza ondulatória da luz, prevista por Huygens e confirmada experimentalmente por Young.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">📏</div>
+      <h3>Escala importa</h3>
+      <p>A difração só é significativa quando o obstáculo ou fenda tem dimensões comparáveis ao comprimento de onda da luz.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🎨</div>
+      <h3>Cores separadas</h3>
+      <p>Cada comprimento de onda é difratado em um ângulo diferente, separando a luz branca em seu espectro completo.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">⚙️</div>
+      <h3>Tecnologia</h3>
+      <p>De espectrômetros a fibras ópticas, a difração está na base de tecnologias que definem o mundo moderno.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>📚 Apresentação sobre Dispersão da Luz por Difração · Física Óptica</p>
+  <p style="margin-top: 0.5rem;">Feito com 💜 para fins educacionais · 2026</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
